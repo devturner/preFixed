@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>prefixed search</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <h1>prefixed search</h1>
+
+    <div>
+      <input class="add_item" maxlength="29" id="addTodoTextInput" type="text"><button class="add_button" onclick="handlers.addTodo()">Add</button>
+      <div class="items">
+        <ul class="list">
+        </ul>
+        <button class="deleteAll_button" onclick="handlers.deleteAll()">clear list</button>
+      </div>
+    </div>
+
+    <input class="add_item" maxlength="29" id="addPrefix" type="text"><button class="add_button" onclick="handlers.addPrefix()">Add</button>
+
+    <form method="get" action="https://www.google.com/search">
+      <input type="text" name="q" size="31" value="">
+      <input type="submit" value="Submit">
+    </form>
+
+
+    Select numbers: <br> <input type="button" value="1" name="no" onclick="moveNumbers(this.value)">
+    <input type="button" value="2" name="no" onclick="moveNumbers(this.value)">
+    <input type="button" value="3" name="no" onclick="moveNumbers(this.value)">  <input type="text" id="result" size="20">
+
+    <br>
+    <br>
+
+    <button onclick="createButton()">Make it</button>
+
+
+
+
+
+    <script src="js/client.js"></script>
+
+
+
+
+  </body>
+</html>
