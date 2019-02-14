@@ -1,18 +1,8 @@
 function moveNumbers(num) {
     var txt=document.getElementById("result").value;
-    txt=txt + num;
+    txt=txt + num + ' ';
     document.getElementById("result").value=txt;
-    }
-
-
-function createButton() {
-    var btn = document.createElement("BUTTON");
-    var t = document.createTextNode("CLICK ME");
-    btn.appendChild(t);
-    document.body.appendChild(btn);
-    }
-
-
+  };
 
 // handlers.addTodo
 window.onload = function() {
@@ -54,11 +44,16 @@ var todoList = {
       todoList.persistTodos();
     },
     deleteAll: function() {
-      if (confirm("Delete all items?")) {
+      if (confirm("This will delete all items!")) {
         this.todos = [];
-    } else {
-         alert("Your list is safe.")
-      };
+      } 
+    },
+    searchTodo: function(position) {
+      var slider = document.getElementsByClassName("slider_search")[0];
+      var todo = this.todos[position];
+      moveNumbers(todo.todoText);
+      document.getElementById("result").focus();
+      slider.classList.add("slided_prefix");
     },
     toggleCompleted: function(position) {
       var todo = this.todos[position];
@@ -110,6 +105,14 @@ var handlers = {
         }
       view.displayTodos();
     },
+    searchTodo: function(position) {
+      todoList.searchTodo(position);
+      view.displayTodos();
+    },
+    toggleCompleted: function(position) {
+      todoList.toggleCompleted(position);
+      view.displayTodos();
+    },
     deleteTodo: function(position) {
       todoList.deleteTodo(position);
       view.displayTodos();
@@ -129,25 +132,24 @@ var handlers = {
       todoList.todos.forEach(function(todo, position) {
         var todoText = todo.todoText;
         var todoLi = document.createElement('li');
-        var todoTextWithCompletion = '';
-
-        if (todo.completed === true) {
-          todoTextWithCompletion = '(x) ' + todoText;
+        todoLi.className = 'card'
+        todoLi.id = position;
+        var custLength = 20;
+        todoLi.textContent.className = 'small';
+        if (todoText.length >= custLength) {
+          todoLi.innerHTML = "<span class ='prefixed_text'>" + todoText.substring(0,custLength) + '...' + "</span>";
         } else {
-          todoTextWithCompletion = '(  ) ' + todoText;
+          todoLi.innerHTML = '<span class ="prefixed_text">' + todoText + '</span>';
         }
 
-        todoLi.id = position;
-        todoLi.textContent = todoTextWithCompletion;
+        todoLi.appendChild(this.createSearchButton());
         todoLi.appendChild(this.createDeleteButton());
-        todoLi.appendChild(this.createEditButton());
-        todoLi.appendChild(this.createCompleteButton());
         todosUl.appendChild(todoLi);
       }, this);
     },
     createDeleteButton: function() {
       var deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Remove';
+      deleteButton.innerHTML = "<i class='material-icons delete_icon'>delete_forever</i>";
       deleteButton.className = 'deleteButton';
       return deleteButton;
     },
@@ -163,6 +165,14 @@ var handlers = {
       editButton.className = 'editButton';
       return editButton;
     },
+    createSearchButton: function() {
+      var searchButton = document.createElement('button');
+      searchButton.innerHTML = "<i class='material-icons'>search</i>";
+      searchButton.className = 'searchButton';
+      // searchButton.style.cssFloat = 'left'
+      return searchButton;
+    },
+
     setupEventListeners: function() {
       var todosUl = document.querySelector('ul');
 
@@ -170,13 +180,13 @@ var handlers = {
         var elementClicked = event.target;
 
         if (elementClicked.className === 'deleteButton') {
+          console.log('delete button')
           handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
         };
-        if (elementClicked.className === 'completeButton') {
-          handlers.toggleCompleted(parseInt(elementClicked.parentNode.id));
-        };
-        if (elementClicked.className === 'editButton') {
-          handlers.changeTodo(parseInt(elementClicked.parentNode.id));
+
+        if (elementClicked.className === 'searchButton') {
+          console.log('search button')
+          handlers.searchTodo(parseInt(elementClicked.parentNode.id));
         }
       });
 
@@ -186,7 +196,54 @@ var handlers = {
         }
       }, true);
 
+      document.addEventListener('click', function(event){
+        var elementClicked = event.target;
+
+        if (elementClicked.className === 'lucky') {
+          var luckyElement = document.getElementById("result");
+          var url = "https://www.google.com/search?q=" + luckyElement.value + "&btnI";
+          
+          url = url.replace(/ /g,'+')
+          window.open(url, "_blank");
+          document.getElementById("result").value = "";
+          return true;
+        };
+
+        if (elementClicked.className === 'reg') {
+          var luckyElement = document.getElementById("result");
+          var url = "https://www.google.com/search?q=" + luckyElement.value;
+          
+          url = url.replace(/ /g,'+')
+          window.open(url, "_blank");
+          document.getElementById("result").value = "";
+          return true;
+        };
+        
+        if (elementClicked.className === 'expander_prefix') {
+          var slider = document.getElementsByClassName("slider_prefix")[0];
+          console.log('prefix slider')
+          if (slider.classList.contains("slided_prefix")) {
+            slider.classList.remove("slided_prefix");
+          } else {
+            slider.classList.add("slided_prefix");
+          } return true;
+        };
+
+        if (elementClicked.className === 'expander_search') {
+          var slider = document.getElementsByClassName("slider_search")[0];
+          console.log('search slider')
+          if (slider.classList.contains("slided_search")) {
+            slider.classList.remove("slided_search");
+          } else {
+            slider.classList.add("slided_search");
+          } return true;
+        };
+
+
+
+      }, true);
     }
   };
 
   view.setupEventListeners();
+  
