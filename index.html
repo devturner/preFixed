@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>prefixed search</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   </head>
   <body>
     <h1>prefixed search</h1>
 
-    <div>
-      <input class="add_item" maxlength="29" id="addTodoTextInput" type="text"><button class="add_button" onclick="handlers.addTodo()">Add</button>
-      <div class="items">
-        <ul class="list">
-        </ul>
+
+    <br>
+
+
+    <div class="expander_search">search <i class="material-icons"> expand_more </i></div>
+    <div class="slider_search">
+      <form id="search">
+        <input type="text" id="result" name="q" size="31" placeholder="Google Search" value="">
+        <button class="reg">search</button>  
+         <a id="luckyAdd" action=""><button class="lucky">get lucky</button></a>
+      </form>
+    </div>
+    
+    <div class="expander_prefix">prefix<i class="material-icons"> expand_more </i></div>
+    <div class="slider_prefix">
+      <div>
+        <input class="add_item" maxlength="29" id="addTodoTextInput" type="text" placeholder="Add Prefix" >
+          <button class="add_button" onclick="handlers.addTodo()">Add</button>
         <button class="deleteAll_button" onclick="handlers.deleteAll()">clear list</button>
       </div>
     </div>
-
-    <input class="add_item" maxlength="29" id="addPrefix" type="text"><button class="add_button" onclick="handlers.addPrefix()">Add</button>
-
-    <form method="get" action="https://www.google.com/search">
-      <input type="text" name="q" size="31" value="">
-      <input type="submit" value="Submit">
-    </form>
+    
 
 
-    Select numbers: <br> <input type="button" value="1" name="no" onclick="moveNumbers(this.value)">
-    <input type="button" value="2" name="no" onclick="moveNumbers(this.value)">
-    <input type="button" value="3" name="no" onclick="moveNumbers(this.value)">  <input type="text" id="result" size="20">
+
+    <div class="card-container">
+      <ul class="list">
+      </ul>
+    </div>
 
     <br>
-    <br>
-
-    <button onclick="createButton()">Make it</button>
-
-
-
+    
 
 
     <script src="js/client.js"></script>
-
-
-
-
   </body>
+
 </html>
