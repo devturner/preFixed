@@ -1,0 +1,238 @@
+/*  */
+/* Chevrons; Add; Subtract, Arrow downward, upword */
+
+
+body {
+    margin: 0 auto;
+    max-width: 80em;
+    min-width: 530px;
+    background-color: #f4f5f7;
+    font-family: "Helvetica", "Arial", sans-serif;
+    line-height: 2;
+    padding: 4em 1em;
+}
+
+h2 {
+margin-top: 1em;
+padding-top: 1em;
+}
+
+i {
+    vertical-align: text-top;
+}
+
+
+h1,
+h2,
+strong {
+color: #333;
+}
+
+.deleteAll_button,
+.toggle_button {
+    background-color: #4e86e0;
+    border: none;
+    color: white;
+    padding: 4px 12px;
+    text-align: right;
+    text-transform: lowercase;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 4px 0px 0px;
+    cursor: pointer;
+    float: left;
+}
+
+.add_button {
+    background-color: #4e86e0;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-transform: lowercase;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 4px;
+    cursor: pointer;
+}
+
+.add_item {
+    text-align: left;
+    padding: 15px 15px;
+    width: 450px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #566b78;
+}
+  
+/* .card {
+    display: grid;
+    overflow: hidden;
+} */
+/* .card .button {
+    align-self: end;
+} */
+
+
+
+/* Simple Card styles for prettying */
+
+html {
+    font-size: 16px;
+    font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+body {
+    background-color: #efefef;
+}
+* {
+    box-sizing: border-box;
+}
+.card {
+    box-shadow: 0px 1px 5px #555;
+    background-color: white;
+    display:grid;
+    grid-template-areas: 
+        "head head"
+        "searchButton deleteButton";
+}
+
+.prefixed_text {
+    grid-area: head;
+}
+
+button > * {
+    pointer-events: none;
+  }
+  
+.deleteButton,
+.searchButton {
+    background-color: #777;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: .3s ease-out;
+}
+
+.searchButton {
+    grid-area: searchButton;
+}
+
+.deleteButton {
+    grid-area: deleteButton;
+}
+
+.deleteButton:hover,
+.searchButton:hover {
+    background-color: #555;
+  }
+
+ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    justify-content: center;
+    padding: 1rem;
+    margin: 1rem;
+    grid-gap: 1rem;
+  } 
+
+ul.list {
+    vertical-align: middle;
+    text-align: center;
+    line-height: 36px;
+}
+
+
+/* form {
+    display: block;
+    margin-top: 0em;
+    visibility: hidden;
+} */
+
+.slider_search {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    -moz-transition: height 0.5s ease;
+    -ms-transition: height 0.5s ease;
+    -o-transition: height 0.5s ease;
+    -webkit-transition: height 0.5s ease;
+  }
+  
+.slided_search {
+    height: 40px;
+    /* width: 30px; */
+  }
+
+.slider_prefix {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    -moz-transition: height 0.5s ease;
+    -ms-transition: height 0.5s ease;
+    -o-transition: height 0.5s ease;
+    -webkit-transition: height 0.5s ease;
+  }
+  
+.slided_prefix {
+    height: 70px;
+    /* width: 30px; */
+  }
+
+/*  */
+
+/* 
+.search {
+    height: 0px;
+    width: 0px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  } */
+/* 
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  } */
