@@ -94,8 +94,8 @@ body {
     background-color: white;
     display:grid;
     grid-template-areas: 
-        "head head"
-        "searchButton deleteButton";
+        "head head head"
+        "searchButton undoButton deleteButton";
 }
 
 .prefixed_text {
@@ -105,11 +105,12 @@ body {
 button > * {
     pointer-events: none;
   }
-  
+
 .deleteButton,
+.undoButton,
 .searchButton {
     background-color: #777;
-    padding: 10px 20px;
+    padding: 6px 0px;
     color: white;
     text-decoration: none;
     text-align: center;
@@ -120,11 +121,16 @@ button > * {
     grid-area: searchButton;
 }
 
+.undoButton {
+    grid-area: undoButton;
+}
+
 .deleteButton {
     grid-area: deleteButton;
 }
 
 .deleteButton:hover,
+.undoButton:hover,
 .searchButton:hover {
     background-color: #555;
   }

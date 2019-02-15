@@ -35,8 +35,9 @@ var todoList = {
       };
       todoList.persistTodos();
     },
-    changeTodo: function(position, todoText) {
-      this.todos[position].todoText = todoText;
+    undoTodo: function(position) {
+      document.getElementById("result").value = "";
+      handlers.slideSearch()
       todoList.persistTodos();
     },
     deleteTodo: function(position) {
@@ -49,11 +50,11 @@ var todoList = {
       } 
     },
     searchTodo: function(position) {
-      var slider = document.getElementsByClassName("slider_search")[0];
       var todo = this.todos[position];
       moveNumbers(todo.todoText);
       document.getElementById("result").focus();
-      slider.classList.add("slided_prefix");
+      handlers.slideSearch()
+      
     },
     toggleCompleted: function(position) {
       var todo = this.todos[position];
@@ -98,21 +99,16 @@ var handlers = {
       todoList.addTodo(todoText);
       view.displayTodos();
     },
-    changeTodo: function(position) {
-      var todoText = prompt("Edit your item:");
-        if (todoText) {
-          todoList.changeTodo(position, todoText);
-        }
+    undoTodo: function(position) {
+      todoList.undoTodo(position)
+      
       view.displayTodos();
     },
     searchTodo: function(position) {
       todoList.searchTodo(position);
       view.displayTodos();
     },
-    toggleCompleted: function(position) {
-      todoList.toggleCompleted(position);
-      view.displayTodos();
-    },
+    
     deleteTodo: function(position) {
       todoList.deleteTodo(position);
       view.displayTodos();
@@ -121,6 +117,16 @@ var handlers = {
       todoList.deleteAll();
       sessionStorage.clear();
       view.displayTodos();
+    }, 
+    slideSearch: function() {
+      var slider = document.getElementsByClassName("slider_search")[0];
+      var val = document.getElementById("result").value
+      console.log(val === "")
+        if ((slider.classList.contains("slided_search")) && (val === "")) {
+          slider.classList.remove("slided_search");
+        } else {
+          slider.classList.add("slided_search");
+        } return true;
     }
   };
 
@@ -143,6 +149,7 @@ var handlers = {
         }
 
         todoLi.appendChild(this.createSearchButton());
+        todoLi.appendChild(this.createUndoButton());
         todoLi.appendChild(this.createDeleteButton());
         todosUl.appendChild(todoLi);
       }, this);
@@ -153,25 +160,20 @@ var handlers = {
       deleteButton.className = 'deleteButton';
       return deleteButton;
     },
-    createCompleteButton: function() {
-      var completeButton = document.createElement('button');
-      completeButton.textContent = 'Done';
-      completeButton.className = 'completeButton';
-      return completeButton;
-    },
-    createEditButton: function() {
-      var editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.className = 'editButton';
-      return editButton;
+    createUndoButton: function() {
+      var undoButton = document.createElement('button');
+      undoButton.innerHTML = "<i class='material-icons'>undo</i>";
+      undoButton.className = 'undoButton';
+      return undoButton;
     },
     createSearchButton: function() {
       var searchButton = document.createElement('button');
       searchButton.innerHTML = "<i class='material-icons'>search</i>";
       searchButton.className = 'searchButton';
-      // searchButton.style.cssFloat = 'left'
       return searchButton;
     },
+
+    
 
     setupEventListeners: function() {
       var todosUl = document.querySelector('ul');
@@ -182,12 +184,18 @@ var handlers = {
         if (elementClicked.className === 'deleteButton') {
           console.log('delete button')
           handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
-        };
+        }
 
         if (elementClicked.className === 'searchButton') {
           console.log('search button')
           handlers.searchTodo(parseInt(elementClicked.parentNode.id));
         }
+
+        if (elementClicked.className === 'undoButton') {
+          console.log('undo button')
+          handlers.undoTodo(parseInt(elementClicked.parentNode.id));
+        }
+
       });
 
       document.addEventListener('keydown', function(event) {
@@ -230,13 +238,14 @@ var handlers = {
         };
 
         if (elementClicked.className === 'expander_search') {
-          var slider = document.getElementsByClassName("slider_search")[0];
-          console.log('search slider')
-          if (slider.classList.contains("slided_search")) {
-            slider.classList.remove("slided_search");
-          } else {
-            slider.classList.add("slided_search");
-          } return true;
+          handlers.slideSearch()
+          // console.log('search slider')
+          // var slider = document.getElementsByClassName("slider_search")[0];
+          // if (slider.classList.contains("slided_search")) {
+          //   slider.classList.remove("slided_search");
+          // } else {
+          //   slider.classList.add("slided_search");
+          // } return true;
         };
 
 
@@ -246,4 +255,3 @@ var handlers = {
   };
 
   view.setupEventListeners();
-  
