@@ -1,4 +1,4 @@
-function moveNumbers(num) {
+function searchBar(num) {
     var txt=document.getElementById("result").value;
     txt=txt + num + ' ';
     document.getElementById("result").value=txt;
@@ -51,7 +51,7 @@ var todoList = {
     },
     searchTodo: function(position) {
       var todo = this.todos[position];
-      moveNumbers(todo.todoText);
+      searchBar(todo.todoText);
       document.getElementById("result").focus();
       handlers.slideSearch()
       
@@ -121,7 +121,6 @@ var handlers = {
     slideSearch: function() {
       var slider = document.getElementsByClassName("slider_search")[0];
       var val = document.getElementById("result").value
-      console.log(val === "")
         if ((slider.classList.contains("slided_search")) && (val === "")) {
           slider.classList.remove("slided_search");
         } else {
@@ -182,17 +181,14 @@ var handlers = {
         var elementClicked = event.target;
 
         if (elementClicked.className === 'deleteButton') {
-          console.log('delete button')
           handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
         }
 
         if (elementClicked.className === 'searchButton') {
-          console.log('search button')
           handlers.searchTodo(parseInt(elementClicked.parentNode.id));
         }
 
         if (elementClicked.className === 'undoButton') {
-          console.log('undo button')
           handlers.undoTodo(parseInt(elementClicked.parentNode.id));
         }
 
@@ -229,7 +225,6 @@ var handlers = {
         
         if (elementClicked.className === 'expander_prefix') {
           var slider = document.getElementsByClassName("slider_prefix")[0];
-          console.log('prefix slider')
           if (slider.classList.contains("slided_prefix")) {
             slider.classList.remove("slided_prefix");
           } else {
@@ -239,16 +234,7 @@ var handlers = {
 
         if (elementClicked.className === 'expander_search') {
           handlers.slideSearch()
-          // console.log('search slider')
-          // var slider = document.getElementsByClassName("slider_search")[0];
-          // if (slider.classList.contains("slided_search")) {
-          //   slider.classList.remove("slided_search");
-          // } else {
-          //   slider.classList.add("slided_search");
-          // } return true;
         };
-
-
 
       }, true);
     }
