@@ -8,16 +8,14 @@ function searchBar(num) {
 window.onload = function() {
     if(sessionStorage.length !== 0) {
       var storedTodos = JSON.parse(sessionStorage.todoList);
-
-          for (var i = 0; i < storedTodos.length; i++){
-          var todo = storedTodos[i];
-        if (todo.completed === true) {
-          todoList.addTodo(todo.todoText, true);
-        } else {
-          todoList.addTodo(todo.todoText, false);
-        }
+      for (var i = 0; i < storedTodos.length; i++){
+        var todo = storedTodos[i];
+        todoList.addTodo(todo.todoText, false)
         view.displayTodos();
-     }
+      }
+    }
+    if(sessionStorage.length === 0 || sessionStorage.todoList.length < 3) {
+      handlers.slidePrefix()
     }
   };
 
@@ -43,6 +41,9 @@ var todoList = {
     deleteTodo: function(position) {
       this.todos.splice(position, 1);
       todoList.persistTodos();
+      if(sessionStorage.length === 0 || sessionStorage.todoList.length < 3) {
+        handlers.slidePrefix()
+      }
     },
     deleteAll: function() {
       if (confirm("This will delete all items!")) {
@@ -125,7 +126,18 @@ var handlers = {
           slider.classList.remove("slided_search");
         } else {
           slider.classList.add("slided_search");
-        } return true;
+          document.getElementById("result").focus();
+      } return true;
+      
+    },
+    slidePrefix: function() {
+      var slider = document.getElementsByClassName("slider_prefix")[0];
+        if (slider.classList.contains("slided_prefix")) {
+          slider.classList.remove("slided_prefix");
+        } else {
+          slider.classList.add("slided_prefix");
+          document.getElementById("addTodoTextInput").focus();
+      } return true;
     }
   };
 
@@ -224,12 +236,7 @@ var handlers = {
         };
         
         if (elementClicked.className === 'expander_prefix') {
-          var slider = document.getElementsByClassName("slider_prefix")[0];
-          if (slider.classList.contains("slided_prefix")) {
-            slider.classList.remove("slided_prefix");
-          } else {
-            slider.classList.add("slided_prefix");
-          } return true;
+          handlers.slidePrefix()          
         };
 
         if (elementClicked.className === 'expander_search') {
