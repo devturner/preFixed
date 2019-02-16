@@ -4,7 +4,6 @@ function searchBar(num) {
     document.getElementById("result").value=txt;
   };
 
-// handlers.addTodo
 window.onload = function() {
     if(sessionStorage.length !== 0) {
       var storedTodos = JSON.parse(sessionStorage.todoList);
@@ -85,7 +84,6 @@ var todoList = {
       todoList.persistTodos();
     }
   };
-
 
 var handlers = {
     addTodo: function() {
@@ -183,8 +181,6 @@ var handlers = {
       searchButton.className = 'searchButton';
       return searchButton;
     },
-
-    
 
     setupEventListeners: function() {
       var todosUl = document.querySelector('ul');

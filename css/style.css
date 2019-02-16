@@ -1,16 +1,12 @@
-/*  */
-/* Chevrons; Add; Subtract, Arrow downward, upword */
-
-
 html {
     font-size: 16px;
     font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif;
 }
 
-
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0 auto;
     max-width: 50em;
@@ -29,7 +25,6 @@ padding-top: 1em;
 i {
     vertical-align: text-top;
 }
-
 
 h1,
 h2,
@@ -78,7 +73,7 @@ strong {
 
 button > * {
     pointer-events: none;
-  }
+}
 
 .expander_prefix,
 .expander_search,
@@ -112,11 +107,12 @@ button > * {
     text-align: center;
     transition: .3s ease-out;
 }
+
 .deleteButton:hover,
 .undoButton:hover,
 .searchButton:hover {
     background-color: #555;
-  }
+}
 
 .searchButton {
     grid-area: searchButton;
@@ -152,7 +148,6 @@ ul.list {
 }
 
 .slider_search {
-    /* float: left; */
     margin: auto;
     height: 0px;
     overflow: hidden;
@@ -164,7 +159,6 @@ ul.list {
   }
 
 .slider_prefix {
-    /* float: right; */
     margin: auto;
     height: 0px;
     overflow: hidden;
@@ -180,8 +174,6 @@ ul.list {
     height: 90px;
   }
 
-
-
 footer {
     background-color: #f4f5f7;
     position: fixed;
@@ -193,5 +185,3 @@ footer {
     margin: 0 auto;
     padding-top: 15px;
 }    
-
-/* footer{ background:#DB8A8A; } */
