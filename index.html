@@ -9,15 +9,13 @@
       rel="stylesheet">
   </head>
   <body>
+    
     <h1>prefixed search</h1>
 
     <div class= "tools">
       <div class="expander_search">search</div>
       <div class="expander_prefix">prefix</div>
     </div>
-    
-
-
 
     <div class="card-container">
       <ul class="list">
@@ -25,25 +23,24 @@
     </div>
 
     <br>
+    <br>
     
     <footer>
-        <div class="slider_search">
-          <form id="search">
-            <input class="add_item" type="text" id="result" name="q" size="31" placeholder="just blank it" value="">
-            <button class="reg">search</button> <a id="luckyAdd" action=""><button class="lucky">lucky</button></a>
-          </form>
+      <div class="slider_search">
+        <form id="search">
+          <input class="add_item" type="text" id="result" name="q" size="31" placeholder="just blank it" value="">
+          <button class="reg">search</button> <a id="luckyAdd" action=""><button class="lucky">lucky</button></a>
+        </form>
+      </div>
+      <div class="slider_prefix">
+        <div>
+          <input class="add_item" maxlength="29" id="addTodoTextInput" type="text" placeholder="add a prefix" >
+            <button class="add_button" onclick="handlers.addTodo()">Add</button>
+          <button class="deleteAll_button" onclick="handlers.deleteAll()">clear all</button>
         </div>
-
-        <div class="slider_prefix">
-          <div>
-            <input class="add_item" maxlength="29" id="addTodoTextInput" type="text" placeholder="add a prefix" >
-              <button class="add_button" onclick="handlers.addTodo()">Add</button>
-            <button class="deleteAll_button" onclick="handlers.deleteAll()">clear all</button>
-          </div>
-        </div>
+      </div>
     </footer>
 
     <script src="js/client.js"></script>
   </body>
-
 </html>
