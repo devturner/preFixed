@@ -135,18 +135,18 @@ button > * {
     border-bottom-right-radius: 4px;
 }
 
-.card-container {
+/* .card-container {
     margin: -31px;
-}
+} */
 
 ul {
     list-style-type: none;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     justify-content: center;
-    padding: 15px;
-    margin: 15px;
-    grid-gap: 15px;
+    padding: 1rem;
+    margin: 1rem;
+    grid-gap: 1rem;
   }
 
 ul.list {
