@@ -9,12 +9,12 @@ html {
 
 body {
     margin: 0 auto;
-    max-width: 50em;
+    max-width: 75em;
     max-height: 50%;
-    background-color: #f4f5f7;
+    background-color: #DFDCE3;
     font-family: "Helvetica", "Arial", sans-serif;
     line-height: 2;
-    padding: 4em 1em;
+    padding: 4em 4em;
 }
 
 h2 {
@@ -61,8 +61,9 @@ strong {
 .card {
     box-shadow: 0px 1px 5px #555;
     background-color: white;
+    border-radius: 4px;
     display:grid;
-    grid-template-areas: 
+    grid-template-areas:
         "head head head"
         "searchButton undoButton deleteButton";
 }
@@ -78,7 +79,7 @@ button > * {
 .expander_prefix,
 .expander_search,
 .deleteAll_button,
-.reg, 
+.reg,
 .lucky,
 .add_button {
     background-color: #4e86e0;
@@ -97,25 +98,31 @@ button > * {
 .deleteButton,
 .undoButton,
 .searchButton {
-    background-color: #777;
+    background-color: #465c8b;
     padding: 2px 0px;
     border-top: none;
-    border-left: none;
     border-bottom: none;
+    /* border: none; */
+    border-color: whitesmoke;
     color: whitesmoke;
     text-decoration: none;
     text-align: center;
     transition: .3s ease-out;
 }
 
-.deleteButton:hover,
-.undoButton:hover,
-.searchButton:hover {
+.deleteButton:hover {
+    background-color: #7a2828;
+}
+
+.searchButton:hover,
+.undoButton:hover {
     background-color: #555;
 }
 
 .searchButton {
     grid-area: searchButton;
+    border: none;
+    border-bottom-left-radius: 4px;
 }
 
 .undoButton {
@@ -124,7 +131,8 @@ button > * {
 
 .deleteButton {
     grid-area: deleteButton;
-    border-right: none;
+    border: none;
+    border-bottom-right-radius: 4px;
 }
 
 .card-container {
@@ -136,10 +144,10 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     justify-content: center;
-    padding: 1rem;
-    margin: 1rem;
-    grid-gap: 1rem;
-  } 
+    padding: 15px;
+    margin: 15px;
+    grid-gap: 15px;
+  }
 
 ul.list {
     vertical-align: middle;
@@ -184,4 +192,4 @@ footer {
     max-width: 50em;
     margin: 0 auto;
     padding-top: 15px;
-}    
+}
