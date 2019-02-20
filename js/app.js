@@ -192,10 +192,20 @@ var handlers = {
           return true;
         };
 
+        if (elementClicked.className === 'news') {
+          var luckyElement = document.getElementById("result");
+          var url = "https://www.google.com/search?q=" + luckyElement.value + "&source=lnms&tbm=nws"
+          
+          url = url.replace(/ /g,'+')
+          window.open(url, "_blank");
+          document.getElementById("result").value = "";
+          return true;
+        };
+
         if (elementClicked.className === 'reg') {
           var luckyElement = document.getElementById("result");
           var url = "https://www.google.com/search?q=" + luckyElement.value;
-
+          
           url = url.replace(/ /g,'+')
           window.open(url, "_blank");
           document.getElementById("result").value = "";
