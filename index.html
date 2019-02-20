@@ -10,12 +10,15 @@
   </head>
   <body>
 
-    <h1>prefixed search</h1>
-    <h3> making repetitive searching easier</h3>
+    <div class="company">
+      <h1>prefixed</h1>
+      <p> streamlining repetitive searches</p>
+    </div>
 
     <div class= "tools">
-      <div class="expander_search">search</div>
       <div class="expander_prefix">prefix</div>
+      <div class="expander_search">search</div>
+      
     </div>
 
     <div class="card-container">
@@ -29,13 +32,13 @@
     <footer>
       <div class="slider_search">
         <form id="search">
-          <input class="add_item" type="text" id="result" name="q" size="31" placeholder="just blank it" value="">
+          <input class="add_item" type="text" id="result" name="q" size="31" placeholder='"just blank it"' value="">
           <button class="reg">search</button> <a id="luckyAdd" action=""><button class="lucky">lucky</button></a>
         </form>
       </div>
       <div class="slider_prefix">
         <div>
-          <input class="add_item" maxlength="29" id="addprefixTextInput" type="text" placeholder="add a prefix" >
+          <input class="add_item" maxlength="29" id="addprefixTextInput" type="text" placeholder="add search prefix" >
             <button class="add_button" onclick="handlers.addPrefix()">Add</button>
           <button class="deleteAll_button" onclick="handlers.deleteAll()">clear all</button>
         </div>
