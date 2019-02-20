@@ -14,26 +14,17 @@ body {
     background-color: #DFDCE3;
     font-family: "Helvetica", "Arial", sans-serif;
     line-height: 2;
-    padding: 4em 4em;
-}
-
-h2 {
-margin-top: 1em;
-padding-top: 1em;
-}
-
-i {
-    vertical-align: text-top;
+    /* padding: 4em 4em; */
 }
 
 h1,
-h2,
-strong {
+h3 {
     color: #333;
 }
 
-.tools {
-    height: 100px;
+.company {
+    line-height: .5;
+    margin: 60px 0px 30px 0px;
 }
 
 .expander_prefix,
@@ -41,13 +32,13 @@ strong {
     font-size: 24px;
 }
 
-.expander_search {
+/* .expander_search {
     float: left;
-}
+} */
 
-.expander_prefix {
+/* .expander_prefix {
     float: right;
-}
+} */
 
 .add_item {
     text-align: left;
@@ -82,7 +73,7 @@ button > * {
 .reg,
 .lucky,
 .add_button {
-    background-color: #4e86e0;
+    background-color: #465c8b;
     border: none;
     color: whitesmoke;
     padding: 5px 15px;
@@ -102,19 +93,21 @@ button > * {
     padding: 2px 0px;
     border-top: none;
     border-bottom: none;
-    /* border: none; */
     border-color: whitesmoke;
     color: whitesmoke;
     text-decoration: none;
     text-align: center;
     transition: .3s ease-out;
+    cursor: pointer; 
 }
 
 .deleteButton:hover {
     background-color: #7a2828;
 }
 
-.searchButton:hover,
+.searchButton:hover {
+    background-color: #1f6830;
+}
 .undoButton:hover {
     background-color: #555;
 }
@@ -142,7 +135,7 @@ button > * {
 ul {
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     justify-content: center;
     padding: 1rem;
     margin: 1rem;
@@ -179,7 +172,7 @@ ul.list {
 
 .slided_search,
 .slided_prefix {
-    height: 90px;
+    height: 55px;
   }
 
 footer {
